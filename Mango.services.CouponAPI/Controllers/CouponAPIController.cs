@@ -40,8 +40,10 @@ namespace Mango.services.CouponAPI.Controllers
             return _response;    
         }
 
-        [HttpGet]
-        [Route("id:int")]
+        //[HttpGet]
+        //[Route("id:int")]
+        //[Route("{id:int}")]
+        [HttpGet("{id:int}")]
         public ResponseDto Get(int id)
         {
             try
@@ -127,7 +129,7 @@ namespace Mango.services.CouponAPI.Controllers
         }
 
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public ResponseDto Delete(int id)
         {
             try
