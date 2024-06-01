@@ -1,6 +1,7 @@
 ﻿using Mango.services.AuthAPI.Migrations;
 using Mango.services.AuthAPI.Service.IService;
 using Mango.Services.AuthAPI.Models;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,9 +14,9 @@ namespace Mango.services.AuthAPI.Service
     {
         private readonly JwtOptions _jwtOptions;
 
-        public JwtTokenGenerator(JwtOptions jwtOptions)
+        public JwtTokenGenerator(IOptions<JwtOptions> jwtOptions)
         {
-            _jwtOptions = jwtOptions;
+            _jwtOptions = jwtOptions.Value;
         }
 
 
