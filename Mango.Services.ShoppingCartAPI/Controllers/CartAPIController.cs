@@ -37,7 +37,7 @@ namespace Mango.Services.ShoppingCartAPI.Controllers
             try
             {
                 var cartHeaderFromDb = await _db.CartHeaders.AsNoTracking()
-                    .FirstOrDefaultAsync(u => u.UserId == cartDto.CartHeader.UserId);
+                   .FirstOrDefaultAsync(u => u.UserId == cartDto.CartHeader.UserId);
                 if (cartHeaderFromDb == null)
                 {
                     //create header and details
