@@ -16,7 +16,7 @@ namespace Mango.web.Service
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<ResponseDto?> sendAsync(RequestDto requestDto, bool withBearer = true)
+        public async Task<ResponseDto?> SendAsync(RequestDto requestDto, bool withBearer = true)
         {
 
             try
