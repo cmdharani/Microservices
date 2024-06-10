@@ -64,7 +64,7 @@ namespace Mango.web.Service
                         break;
                 }
 
-                apiResponse = await client.SendAsync(message);
+                 apiResponse = await client.SendAsync(message);
 
                 switch (apiResponse.StatusCode)
                 {
