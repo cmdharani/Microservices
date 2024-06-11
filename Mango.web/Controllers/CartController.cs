@@ -1,4 +1,5 @@
-﻿using Mango.web.Models;
+﻿using IdentityModel;
+using Mango.web.Models;
 using Mango.web.Service.Iservice;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,50 @@ namespace Mango.web.Controllers
                 return cartDto;
             }
             return new CartDto();
+        }
+
+        public async Task<IActionResult> Remove(int cartDetailsId)
+        {
+            var userId = User.Claims.Where(u => u.Type == JwtClaimTypes.Subject)?.FirstOrDefault()?.Value;
+            ResponseDto? response = await _cartService.RemoveFromCartAsync(cartDetailsId);
+
+            if (response != null && response.isSuccess)
+            {
+                TempData["success"] = "Cart updated successfully";
+                return RedirectToAction(nameof(CartIndex));
+            }
+
+            return View();
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> ApplyCoupon(CartDto cartDto)
+        {
+
+            ResponseDto? response = await _cartService.ApplyCouponAsync(cartDto);
+            if (response != null & response.isSuccess)
+            {
+                TempData["success"] = "Cart updated successfully";
+                return RedirectToAction(nameof(CartIndex));
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveCoupon(CartDto cartDto)
+        {
+
+            cartDto.CartHeader.CouponCode=string.Empty;
+            ResponseDto? response = await _cartService.ApplyCouponAsync(cartDto);
+            if (response != null & response.isSuccess)
+            {
+                TempData["success"] = "Cart updated successfully";
+                return RedirectToAction(nameof(CartIndex));
+            }
+            return View();
         }
 
     }

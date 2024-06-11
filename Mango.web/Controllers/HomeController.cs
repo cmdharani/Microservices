@@ -40,6 +40,12 @@ namespace Mango.web.Controllers
             return View(list);
         }
 
+
+
+        
+
+
+
         [Authorize]
         public async Task<IActionResult> ProductDetails(int productId)
         {
