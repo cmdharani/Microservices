@@ -24,6 +24,7 @@ namespace Mango.Web.Service
 
         public async Task<ResponseDto?> EmailCart(CartDto cartDto)
         {
+
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = SD.ApiType.POST,
