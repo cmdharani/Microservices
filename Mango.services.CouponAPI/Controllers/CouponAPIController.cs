@@ -67,7 +67,8 @@ namespace Mango.services.CouponAPI.Controllers
         {
             try
             {
-                Coupon? coupon = _dbContext.Coupons.FirstOrDefault(x => x.CouponCode.ToLower() == code.ToLower());
+                //Coupon? coupon = _dbContext.Coupons.FirstOrDefault(x => x.CouponCode.ToLower() == code.ToLower());
+                Coupon? coupon = _dbContext.Coupons.FirstOrDefault(x => x.CouponCode.Equals(code, StringComparison.CurrentCultureIgnoreCase));
 
                 if (coupon == null)
                 {
