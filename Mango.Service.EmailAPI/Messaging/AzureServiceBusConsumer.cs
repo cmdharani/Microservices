@@ -21,7 +21,7 @@ namespace Mango.Service.EmailAPI.Messaging
             _configuration = configuration;
 
             serviceBusConnectionString = _configuration.GetValue<string>("ServiceBusConnectionString");
-            emailCartQueue = _configuration.GetValue<string>("TopicAndQueueNames:emailshoppingcart");
+            emailCartQueue = _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue");
 
 
 
@@ -34,6 +34,7 @@ namespace Mango.Service.EmailAPI.Messaging
         {
             _emailCartProcessor.ProcessMessageAsync += OnEmailCartRequestReceived;
             _emailCartProcessor.ProcessErrorAsync += ErrorHandler;
+            await _emailCartProcessor.StartProcessingAsync();
 
         }
 
