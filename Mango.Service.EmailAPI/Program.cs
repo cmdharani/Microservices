@@ -1,4 +1,5 @@
 using Mango.services.EmailAPI.Data;
+using Mango.Services.EmailAPI.Extension;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 ApplyMigration();
+app.UseAzureServiceBusConsumer();
 app.Run();
 
 
