@@ -49,12 +49,10 @@ app.Run();
 
 void ApplyMigration()
 {
-    using (var scope=app.Services.CreateScope())
+    using var scope = app.Services.CreateScope();
+    var _db = scope.ServiceProvider.GetService<AppDbContext>();
+    if (_db != null && _db.Database.GetAppliedMigrations().Any())
     {
-        var _db=scope.ServiceProvider.GetService<AppDbContext>();
-        if(_db != null && _db.Database.GetAppliedMigrations().Count()>0)
-        {
-            _db.Database.Migrate();
-        }
+        _db.Database.Migrate();
     }
 }
