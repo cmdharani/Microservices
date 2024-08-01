@@ -1,5 +1,6 @@
 using Mango.services.AuthAPINew.Data;
 using Mango.Services.AuthAPINew.Models;
+using Mango.Services.AuthAPINew.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IAuthService,AuthService>();
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions"));
 
