@@ -20,7 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-
+builder.Services.AddScoped<IJwtTokenGenerator,JwtTokenGenerator>();
 
 
 builder.Services.AddEndpointsApiExplorer();

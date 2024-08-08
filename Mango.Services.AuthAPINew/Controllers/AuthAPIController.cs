@@ -41,6 +41,7 @@ namespace Mango.Services.AuthAPINew.Controllers
             if(loginResult.User != null ) //&& loginResult.Token != string.Empty)
             {
                 _response.Message = "Logged in Successful";
+                _response.Result = loginResult;
                 return Ok(_response);
             }
             else
