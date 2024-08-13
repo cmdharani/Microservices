@@ -50,7 +50,7 @@ namespace Mango.web.Service
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = SD.ApiType.GET,
-                Url = SD.ProductAPIBase + "/api/productId/GetByCode/" + productId
+                Url = SD.ProductAPIBase + "/api/product/GetByCode/" + productId
 
             });
         }
